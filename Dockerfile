@@ -5,6 +5,7 @@ FROM $core as download
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 ENV GPG_VERSION 2.3.4
+ENV NODE_VERSION 16.15.1
 
 RUN Invoke-WebRequest $('https://files.gpg4win.org/gpg4win-vanilla-{0}.exe' -f $env:GPG_VERSION) -OutFile 'gpg4win.exe' -UseBasicParsing ; \
     Start-Process .\gpg4win.exe -ArgumentList '/S' -NoNewWindow -Wait
