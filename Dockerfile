@@ -1,6 +1,4 @@
-ARG core=mcr.microsoft.com/windows/servercore:ltsc2022
-ARG target=mcr.microsoft.com/windows/servercore:ltsc2022
-FROM $core as download
+FROM mcr.microsoft.com/windows/servercore:ltsc2022 as download
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
@@ -17,8 +15,6 @@ RUN Invoke-WebRequest $('https://nodejs.org/dist/v{0}/node-v{0}-win-x64.zip' -f 
 
 
 ENV NPM_CONFIG_LOGLEVEL info
-
-COPY --from=download /nodejs /nodejs
 
 RUN $env:PATH = 'C:\nodejs;{0}' -f $env:PATH ; \
     [Environment]::SetEnvironmentVariable('PATH', $env:PATH, [EnvironmentVariableTarget]::Machine)
