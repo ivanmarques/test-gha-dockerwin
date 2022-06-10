@@ -16,4 +16,5 @@ jobs:
 
     - name: Build and Push container to registry
       run: |
-        docker build -t testwin:1 .
+        docker build -t ivanmarques/testwinimage:1 .
+        docker push ivanmarques/testwinimage:1
