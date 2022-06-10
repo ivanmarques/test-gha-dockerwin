@@ -1,5 +1,5 @@
-ARG core=mcr.microsoft.com/windows/servercore:ltsc2019
-ARG target=mcr.microsoft.com/windows/servercore:ltsc2019
+ARG core=mcr.microsoft.com/windows/servercore:ltsc2022
+ARG target=mcr.microsoft.com/windows/servercore:ltsc2022
 FROM $core as download
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
