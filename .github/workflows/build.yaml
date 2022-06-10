@@ -10,10 +10,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
-
     # Checks out repository so your workflow can access it
     - uses: actions/checkout@v1
-
+    - name: Log in to Docker Hub
+        uses: docker/login-action
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Build and Push container to registry
       run: |
         docker build -t ivanmarques/testwinimage:1 .
